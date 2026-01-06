@@ -1,0 +1,365 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Green Benefits & Rewards</title>
+  <style>
+    html {
+  scroll-behavior: smooth;
+}
+
+    body, h1, h2, h3, p, ul {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        margin-top: 100px;
+        color: white;
+        overflow-x: hidden;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgb(246, 247, 246);
+        padding: 15px 30px;
+        position: fixed;
+        width: 100%;
+        height: 100px;
+        top: 0;
+        z-index: 1000;
+        border: 4px solid rgb(47, 97, 47);
+        box-sizing: border-box;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: rgb(47, 97, 47);
+    }
+
+    .logo img {
+        width: 50px;
+        height: auto;
+        margin-right: 10px;
+    }
+
+    nav {
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        padding-right: 20px;
+    }
+
+    nav ul li {
+        margin: 0 12px;
+    }
+
+    nav ul li:last-child {
+        margin-right: 20px;
+    }
+
+    nav ul li a {
+        display: inline-block;
+        padding: 10px 15px;
+        border: 2px solid rgb(47, 97, 47);
+        border-radius: 5px;
+        color: rgb(47, 97, 47);
+        background: white;
+        text-decoration: none;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+        background-color: rgb(47, 97, 47);
+        color: white;
+    }
+
+    h1 {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 30px;
+    }
+
+ .content {
+  
+    background-image:  url('{% static "mainapp/images/bg4.jpeg" %}');
+    background-color: rgba(0, 0, 0, 0.4); 
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 10px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.card1 {
+    
+    padding: 30px;
+    margin-top: 200px;
+    margin-bottom: 500px;
+    border-radius: 12px;
+     background-color: rgba(0, 0, 0, 0.6); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    text-align: center;
+}
+
+.card1 h1 {
+    color: #ffffff;
+    font-size: 36px;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px #000; 
+}
+
+.card1 p {
+    font-size: 25px;
+    color: #e7ffe3;
+    line-height: 1.8;
+    margin-top: 15px;
+    text-shadow: 1px 1px 2px #000; 
+}
+
+.btn {
+    display: inline-block;
+    background: white;
+    color: black;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease; 
+}
+
+
+.btn:hover {
+    background-color: rgb(25, 37, 25); 
+    color: white;
+    transform: scale(1.05); 
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); 
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 2px solid #c8f3c2;
+    padding: 25px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    color: #ffffff;
+}
+
+.card h2 {
+    margin-bottom: 12px;
+    color: #d4ffd7;
+    font-size: 28px;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.card p,
+.card ul li {
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1.9;
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 3px #000;
+    line-height: 1.5;
+    margin-top: 5%;
+}
+
+.card p strong {
+    color: #fffdc0;
+    font-size: 22px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+    text-shadow: 2px 2px 4px #1e431e;
+    line-height: 1.0;
+    margin-top: 5%;
+}
+
+.card a {
+    color: #8ddfff;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+
+    #Footer {
+        background-color: #2f612f;
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+        font-size: 18px;
+        margin-top: 40px;
+        border-top: 5px solid #1e431e;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #Footer p {
+        margin: 10px 0;
+    }
+
+    #Footer p i {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    #Footer a {
+        color: #cfeac0;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    #Footer a:hover {
+        text-decoration: underline;
+    }
+
+    .footer-logo {
+        width: 100px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="{% static 'mainapp/images/logo.png' %}" alt="Green Coin Logo" style="width:50px; height:50px; border-radius: 100%;">
+      <span>Green Coin</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'submit_proof' %}">Submit Proof</a></li>
+        <li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
+        <li><a href="{% url 'reward' %}">Rewards</a></li>
+        <li><a href="{% url 'awareness' %}" class="active">Eco Benefits</a></li>
+        {% if not request.session.user_id %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <div class="logo">
+      <a href="{% url 'profile' %}">
+        <img src="{% static 'mainapp/images/profile.jpeg' %}" alt="Profile" style="width:40px; height:40px; border-radius:100%;">
+      </a>
+    </div>
+  </header>
+
+  
+  <div class="content">
+    <div class="container">
+      <div class="card1">
+        <h1>Government Benefits & Green Rewards</h1>
+        <p>Explore the various government schemes and eco-friendly initiatives that reward you for your green actions.</p>
+        <a onclick="scrollToCard()" class="btn">Explore Now</a>
+
+      </div>
+      <div class="card" id="card">
+        <h2> Tree Plantation</h2>
+        <p><strong>Green Credit Programme (MoEFCC)</strong><br>
+        Earn tradable green credits by planting trees under verified afforestation projects.<br>
+        <a href="https://www.moefcc-gcp.in" target="_blank">Visit Official Site</a></p>
+      </div>
+
+      <div class="card">
+        <h2> Public Transport</h2>
+        <p><strong>Mo Bus Scheme (Odisha)</strong><br>
+        50% fare discount for women, students, elderly, disabled, and transgender individuals.<br>
+        <a href="https://odishatransport.gov.in/content/Mo-Bus/7" target="_blank">Visit Official Site</a></p>
+      </div>
+
+      <div class="card">
+        <h2> Solar Panel</h2>
+        <p><strong>PM Surya Ghar: Muft Bijli Yojana</strong><br>
+        Up to 60% subsidy for rooftop solar panels. 300 units of electricity free monthly.<br>
+        <a href="https://pmsuryaghar.gov.in" target="_blank">Visit Official Site</a></p>
+
+        <p><strong>Maharashtra Solar Pump Scheme</strong><br>
+        90–95% subsidy on solar agriculture pumps for farmers.<br>
+        <a href="https://www.mahadiscom.in/solar_MTSKPY/" target="_blank">Visit Official Site</a></p>
+      </div>
+
+      <div class="card">
+        <h2>⚡ Electric Vehicle</h2>
+        <p><strong>FAME II (National EV Subsidy Scheme)</strong><br>
+        Up to ₹10,000/kWh subsidy on EVs (max 15% of vehicle cost).<br>
+        <a href="https://heavyindustries.gov.in/fame-ii" target="_blank">Visit Official Site</a></p>
+
+        <p><strong>PM e-DRIVE Voucher Scheme</strong><br>
+        Claim EV subsidy directly through e-voucher.<br>
+        <a href="https://pmedrive.heavyindustries.gov.in/" target="_blank">Visit Official Site</a></p>
+
+        <p><strong>EV Loan Tax Deduction (Section 80EEB)</strong><br>
+        Claim up to ₹1.5 lakh on EV loan interest.<br>
+        <a href="https://www.incometax.gov.in/iec/foportal/help/section80eeb" target="_blank">Visit Official Site</a></p>
+
+        <p><strong>e-AMRIT Portal</strong><br>
+        Find central + state EV incentives, stations, and models.<br>
+        <a href="https://e-amrit.niti.gov.in/electric-vehicle-incentives" target="_blank">Visit Official Site</a></p>
+      </div>
+
+      <div class="card">
+        <h2> Online Eco-Friendly Lifestyle Benefits</h2>
+        <ul>
+          <li><a href="https://greenfeels.in" target="_blank">Green Feels</a> – Plastic-free daily essentials</li>
+          <li><a href="https://brownliving.in" target="_blank">Brown Living</a> – Sustainable fashion, gifts, home</li>
+          <li><a href="https://www.loopify.world" target="_blank">Loopify</a> – Natural kitchen, fashion, wellness</li>
+          <li><a href="https://www.ecoindia.store" target="_blank">Eco India Store</a> – Compostable dinnerware</li>
+          <li><a href="https://meolaa.com" target="_blank">Meolaa</a> – Eco beauty, baby care, groceries</li>
+          <li><a href="https://www.amazon.in/s?k=eco+friendly+products" target="_blank">Amazon</a> – BEE 5-star & green goods</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="Footer">
+    <img src="{% static 'mainapp/images/logo.png' %}" alt="Green Coin Logo" class="footer-logo">  
+    <p><i>"Nature Rewards Those Who Care!"</i></p>
+    <p>Contact us at: <a href="mailto:greencoin.support@example.com">greencoin.support@example.com</a></p>
+    <p>&copy; 2025 Green Coin. All rights reserved.</p>
+  </div>
+  <script>
+  function scrollToCard() {
+    const card = document.getElementById("card");
+    const cardTop = card.getBoundingClientRect().top;
+    const offset = window.innerHeight / 2 - card.offsetHeight / 2;
+
+    window.scrollBy({
+      top: cardTop - offset,
+      behavior: "smooth"
+    });
+  }
+</script>
+
+</body>
+</html>

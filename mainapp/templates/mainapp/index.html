@@ -1,0 +1,106 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Coin - Home</title>
+    <link rel="stylesheet" href="{% static 'mainapp/css/index.css' %}">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="{% static 'mainapp/images/logo.png' %}" alt="Green Coin Logo" style="width:50px;height:50px;border-radius: 100%;"> 
+            <span>Green Coin</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'submit_proof' %}">Submit Proof</a></li>
+                <li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
+                <li><a href="{% url 'reward' %}">Rewards</a></li>
+                <li><a href="{% url 'awareness' %}">Eco Benefits</a></li>
+
+                {% if not request.session.user_id %}
+    <li><a href="{% url 'login' %}">Login</a></li>
+  {% endif %}
+
+  
+            </ul> 
+        </nav>
+
+        
+        <div class="logo">
+            <a href="{% url 'profile' %}">
+                <img src="{% static 'mainapp/images/profile.jpeg' %}" alt="Profile" style="width:40px; height:40px; border-radius:100%;">
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>"Join the Green Revolution"</h1>
+            <p>Take action for a cleaner, greener future and get rewarded <br>for making a difference.</p>
+            <a href="{% url 'signup' %}" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section class="vision">
+        <h2>Our Vision</h2>
+        <p>"At Green Coin, we aspire to create a world where sustainability is a way of life. Through small, conscious actions like planting trees, using public transport, harnessing solar energy, and adopting electric vehicles, we believe in building a cleaner, greener, and more sustainable future. Every step towards environmental responsibility brings us closer to a healthier planet for future generations."</p>
+    </section>
+    <hr>
+
+    <section class="initiatives">
+        <h2>Our Initiatives</h2>
+        
+        <div class="initiative-row">
+            <img src="{% static 'mainapp/images/i1.jpg' %}" alt="Planting Trees" class="initiative-image">
+            <div class="initiative-text">
+                <h3>Tree Plantation Drives</h3>
+                <p>We encourage afforestation by planting trees in urban and rural areas. Our initiative focuses on increasing green cover, reducing air pollution, and creating a healthier environment. We collaborate with schools, communities, and organizations to make tree planting a collective effort. Regular follow-ups ensure the survival and growth of these trees.</p>
+            </div>
+         </div>
+        
+        <div class="initiative-row reverse">
+            <div class="initiative-text">
+                <h3>Public Transport Usage</h3>
+                <p>Promoting the use of buses, metros, and shared transport to reduce emissions. By reducing individual vehicle usage, we aim to lower congestion, improve air quality, and conserve energy. Our campaign raises awareness about the environmental benefits of public transport and encourages policies that enhance the accessibility and efficiency of these systems.</p>
+            </div>
+            <img src="{% static 'mainapp/images/i2.png' %}" alt="Using Public Transport" class="initiative-image">
+        </div>
+        
+        <div class="initiative-row">
+            <img src="{% static 'mainapp/images/i3.jpg' %}" alt="Consuming Solar Energy" class="initiative-image">
+            <div class="initiative-text">
+                <h3>Solar Energy Consumption</h3>
+                <p>Encouraging homes and businesses to shift to renewable solar energy sources. We provide guidance on solar panel installation, government subsidies, and cost-effectiveness. By switching to solar energy, individuals and companies can significantly reduce their carbon footprint, lower electricity bills, and contribute to a sustainable future.</p>
+            </div>
+        </div>
+        
+        <div class="initiative-row reverse">
+            <div class="initiative-text">
+                <h3>Electric Vehicles</h3>
+                <p>Advocating the use of EVs to reduce reliance on fossil fuels. Our initiative supports the development of charging infrastructure, incentives for EV adoption, and educating people on the long-term benefits of electric mobility. By choosing EVs, individuals can help decrease carbon emissions, reduce noise pollution, and move towards a cleaner and more sustainable transportation system.</p>
+            </div>
+            <img src="{% static 'mainapp/images/i4.webp' %}" alt="Using Electric Vehicles" class="initiative-image">
+        </div>
+    </section>
+     
+    <div id="Footer">
+        <img src="{% static 'mainapp/images/logo.png' %}" alt="Green Coin Logo" class="footer-logo">  
+        <p><i>"Nature Rewards Those Who Care!"</i></p>
+        <p>Contact us at: <a href="mailto:greencoin.support@example.com">greencoin.support@example.com</a></p>
+        <p>&copy; 2025 Green Coin. All rights reserved.</p>
+    </div>
+    
+</body>
+</html>
+
+
+
+
+
+ 
+

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resubmit Proof</title>
+  <link rel="stylesheet" href="{% static 'mainapp/css/resubmit.css' %}">
+</head>
+<body>
+
+  <div class="resubmit-container">
+    <h2>Resubmit Your Proof</h2>
+
+    <p><strong>Note:</strong> Your previous proof was rejected. Please upload a new, correct photo.</p>
+    <p class="warning"><strong>Do not upload the same image again. It will be automatically rejected.</strong></p>
+
+    <div class="profile-link">
+      <a href="{% url 'profile' %}">← Go to Your Profile</a>
+    </div>
+    
+
+    
+    <div class="previous-proof">
+      <h3>Previous Proof Details</h3>
+      <p><strong>Activity:</strong> {{ submission.activity_type }}</p>
+      <p><strong>Status:</strong> {{ submission.status }}</p>
+      <p><strong>Rejection Reason:</strong> {{ submission.rejection_reason|default:"No reason provided" }}</p>
+      <p><strong>Previous Proof:</strong>
+        <a href="{{ submission.proof_image.url }}" target="_blank" class="view-proof-link">View Previous Proof</a>
+      </p>
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="proof_file">Upload New Proof Image:</label>
+      <input type="file" name="proof_file" id="proof_file" accept="image/*" required>
+
+      <button type="submit">Resubmit</button>
+    </form>
+
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+
+</body>
+</html>

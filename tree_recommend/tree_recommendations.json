@@ -1,0 +1,66 @@
+[
+  {
+    "condition": "Hot & Dry (Summer)",
+    "months": ["March", "April", "May", "June"],
+    "temp_min": 32,
+    "humidity_max": 50,
+    "trees": ["Neem",  "Banyan", "Peepal", "Tamarind", "Amaltas"]
+  },
+  {
+    "condition": "Hot & Humid (Coastal / Monsoon)",
+    "months": ["June", "July", "August", "September"],
+    "temp_min": 28,
+    "humidity_min": 60,
+    "trees": ["Coconut", "Mango", "Ashoka", "Rain Tree", "Indian Almond", "Teak"]
+  },
+  {
+    "condition": "Warm & Semi-Humid (Post Monsoon)",
+    "months": ["October", "November"],
+    "temp_min": 25,
+    "humidity_min": 50,
+    "humidity_max": 70,
+    "trees": ["Gulmohar",  "Bakul", "Indian Coral Tree", "Amla"]
+  },
+  {
+    "condition": "Cool & Dry (Winter Plains)",
+    "months": ["December", "January", "February"],
+    "temp_max": 25,
+    "humidity_max": 60,
+    "trees": ["Jamun", "Arjun", "Bael", "Amaltas", "Peepal"]
+  },
+  {
+    "condition": "Hill Region (Cool & Moist)",
+    "altitude_min": 1000,
+    "temp_max": 22,
+    "humidity_min": 50,
+    "trees": ["Pine", "Deodar", "Silver Oak", "Oak", "Cedar"]
+  },
+  {
+    "condition": "Highly Polluted Urban Area (AQI > 200)",
+    "aqi_min": 200,
+    "trees": ["Neem", "Peepal", "Jamun", "Arjun", "Tulsi", "Mango"]
+  },
+  {
+    "condition": "Moderately Polluted City (AQI 100–200)",
+    "aqi_min": 100,
+    "aqi_max": 200,
+    "trees": ["Neem",  "Gulmohar", "Ashoka", "Indian Mahogany"]
+  },
+  {
+    "condition": "Low Pollution & Normal Climate (AQI < 100)",
+    "aqi_max": 100,
+    "trees": ["Mango", "Banyan", "Amla", "Gulmohar", "Ashoka"]
+  },
+  {
+    "condition": "Semi-Arid Region (Rajasthan / Gujarat type)",
+    "rainfall_max": 600,
+    "humidity_max": 40,
+    "trees": [ "Babool", "Neem", "Ber", "Tamarind"]
+  },
+  {
+    "condition": "Tropical Rainforest Zone (Western Ghats, NE India)",
+    "rainfall_min": 2000,
+    "humidity_min": 70,
+    "trees": ["Teak", "Rosewood", "Mahogany", "Jackfruit", "Coconut"]
+  }
+]

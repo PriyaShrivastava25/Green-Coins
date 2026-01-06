@@ -1,0 +1,95 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Proof - Green Coin</title>
+    <link rel="stylesheet" href="{% static 'mainapp/css/proof_sub.css' %}">
+    <script src="{% static 'mainapp/js/proof_sub.js' %}" defer></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="{% static 'mainapp/images/logo.png' %}" alt="Green Coin Logo" style="width:50px;height:50px;border-radius:100%;">
+        <span>Green Coin</span>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            {% if request.session.user_email %}
+            <li><a href="{% url 'submit_proof' %}">Submit Proof</a></li>
+            <li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
+            <li><a href="{% url 'reward' %}">Rewards</a></li>
+            <li><a href="{% url 'awareness' %}">Eco Benefits</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div class="logo">
+        <a href="{% url 'profile' %}">
+            <img src="{% static 'mainapp/images/profile.jpeg'%}" alt="Profile" style="width:40px; height:40px; border-radius:100%;">
+        </a>
+    </div>
+</header>
+
+<section class="hero-section">
+    <h4>“This path leads to change.<br> One step today, a better greener planet tomorrow.”</h4>
+</section>
+
+<section class="submit-section">
+    <div class="submit-box">
+        <h2>Submit Your Green Activity</h2>
+
+        <p style="color:red; font-weight:bold; font-size: 15px;">
+            ⚠️ Note: Please upload the photo immediately after taking it. If you delay more than 2–3 minutes, live GPS coordinates may not be captured.
+             If you upload the photo later, please use the GPS Map Camera to take it, as it will display the latitude and longitude, which will help you fill in the fields.
+        </p>
+        
+        <form id="proofForm" action="{% url 'submit_proof' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" id="email" value="{{ request.session.user_email }}">
+
+            
+            <label>Select Activity:</label>
+            {{ form.activity_type }}
+
+            
+            <label>Upload Proof (Photo/Receipt):</label>
+            <input type="file" name="proof_image" id="file" accept=".jpeg,.jpg,.png" onchange="checkSize(this)" required />
+            <div id="file-info" style="font-size:14px; color:green; margin-top:4px;"></div>
+
+            
+            <label>Additional Description (optional):</label>
+            {{ form.description }}
+
+            
+            <label>Latitude (manual entry optional):</label>
+            <input type="text" name="claimed_latitude" id="claimed_latitude" placeholder="e.g., 28.6139">
+
+            <label>Longitude (manual entry optional):</label>
+            <input type="text" name="claimed_longitude" id="claimed_longitude" placeholder="e.g., 77.2090">
+
+            
+            <input type="hidden" name="live_latitude" id="live_latitude">
+            <input type="hidden" name="live_longitude" id="live_longitude">
+
+            <button type="submit">Submit Proof</button>
+        </form>
+    </div>
+</section>
+
+<div id="Footer">
+    <img src="{% static 'mainapp/images/logo.png' %}" alt="Green Coin Logo" class="footer-logo">
+    <p><i>"Nature Rewards Those Who Care!"</i></p>
+    <p>Contact us at: <a href="mailto:greencoin.support@example.com">greencoin.support@example.com</a></p>
+    <p>&copy; 2025 Green Coin. All rights reserved.</p>
+</div>
+
+</body>
+</html>
+
+

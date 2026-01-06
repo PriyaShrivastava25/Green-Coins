@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Coin - Login</title>
+    <link rel="stylesheet" href="{% static 'mainapp/css/login.css' %}">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="{% static 'mainapp/images/logo.png' %}" alt="Green Coin Logo" style="width:50px;height:50px;border-radius: 100%;"> 
+            <span>Green Coin</span>
+        </div>
+        <nav>
+            <ul>
+
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'submit_proof' %}">Submit Proof</a></li>
+                <li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
+                <li><a href="{% url 'reward' %}">Rewards</a></li>
+                <li><a href="{% url 'awareness' %}">Eco Benefits</a></li>
+
+                {% if not request.session.user_id %}
+                 <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <div class="logo">
+            <a href="{% url 'profile' %}">
+                <img src="{% static 'mainapp/images/profile.jpeg' %}" alt="Profile" style="width:40px; height:40px; border-radius:100%;">
+            </a>
+        </div>
+    </header>
+
+    <section class="login-section">
+        <div class="login-box">
+            <img src="{% static 'mainapp/images/logo.png' %}" alt="Logo" style="height: auto; width: 70px;">
+            <h2>Login to Green Coin</h2>
+
+            {% if error %}
+    <div style="
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+        padding: 12px 20px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        font-size: 17px;
+    ">
+        {{ error }}
+    </div>
+{% endif %}
+
+
+            <form id="loginForm" action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <div style="position: relative;">
+                    <input type="password" id="password" name="password" required>
+                    <button type="button" id="togglePassword" style="position: absolute; right: 20px; top: 10px; background: none; border: none; cursor: pointer;">
+                        Show
+                    </button>
+                </div>
+
+                <button type="submit">Login</button>
+                <p class="signup-link">Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+            </form>
+        </div>
+    </section>
+
+    <div id="Footer">
+        <img src="{% static 'mainapp/images/logo.png' %}" alt="Footer Logo" class="footer-logo">  
+        <p><i>"Nature Rewards Those Who Care!"</i></p>
+        <p>Contact us at: <a href="mailto:greencoin.support@example.com">greencoin.support@example.com</a></p>
+        <p>&copy; 2025 Green Coin. All rights reserved.</p>
+    </div>
+
+    
+    
+
+
+
+<script src ="{% static 'mainapp/js/signup.js' %}"></script>
+
+    
+
+</body>
+</html>

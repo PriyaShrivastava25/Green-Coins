@@ -1,0 +1,141 @@
+  {% load static %}
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Green Coin - Profile</title>
+     <link rel="stylesheet" href="{% static 'mainapp/css/profile.css' %}">
+     <style>
+         #welcomeMessage {
+             position: fixed;
+             top: 110px;
+             left: 50%;
+             transform: translateX(-50%);
+             background-color: rgba(47, 97, 47, 0.8);
+             color: white;
+             padding: 10px 20px;
+             font-size: 18px;
+             border-radius: 20px;
+             z-index: 2000;
+             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+             animation: fadeOut 4s forwards;
+         }
+ 
+         @keyframes fadeOut {
+             0%, 70% { opacity: 1; }
+             100% { opacity: 0; visibility: hidden; }
+         }
+     </style>
+ </head>
+ 
+ <body>
+ 
+     <div id="welcomeMessage">
+         Welcome, {{ user.name }}!
+     </div>
+ 
+     <header>
+         <div class="logo">
+             <img src="{% static 'mainapp/images/logo.png' %}" alt="Green Coin Logo"style="width:50px; height:50px; border-radius:100%;">
+             <span>Green Coin</span>
+         </div>
+         <nav>
+             <ul>
+
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'submit_proof' %}">Submit Proof</a></li>
+                <li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
+                <li><a href="{% url 'reward' %}">Rewards</a></li>
+                <li><a href="{% url 'awareness' %}">Eco Benefits</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+
+                {% if not request.session.user_id %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                 {% endif %}
+             </ul>
+         </nav>
+         <div class="logo">
+            <a href="{% url 'profile' %}">
+                <img src="{% static 'mainapp/images/profile.jpeg' %}" alt="Profile" style="width:40px; height:40px; border-radius:100%;">
+            </a>
+        </div>
+     </header>
+ 
+     <section class="profile-container">
+         <h2>{{ user.username }}</h2>
+         <hr>
+         <p>Email: {{ user.email }}</p>
+         <p><strong>Coins Earned:</strong> {{ earned_coins }}</p>
+         <p><strong>Coins Spent:</strong> {{ spent_coins }}</p>
+         <p><strong>Coins Left:</strong> {{ coins_left }}</p>
+         <p><strong>Your Rank:</strong> 🏅 {{ rank }}</p>
+     </section>
+ 
+     <section class="proof-section">
+  <h3>Your Submitted Proofs</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Activity</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Proof</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in submitted_proofs %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ s.activity_type }}</td>
+        <td>{{ s.submission_date|date:"d M Y" }}</td>
+        <td>{{ s.status }}</td>
+        <td><a href="#" onclick="openImageModal('{{ s.proof_image.url }}')" style="color: white;">View</a></td>
+        <td>
+          {% if s.status == "Rejected" %}
+          <a href="{% url 'resubmit_proof' s.id %}" class="resubmit">Resubmit</a>
+          {% else %}
+          —
+          {% endif %}
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6">No proofs submitted yet.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  
+  <div id="imageModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; justify-content:center; align-items:center;">
+    <span onclick="closeImageModal()" style="position:absolute; top:20px; right:30px; color:white; font-size:30px; cursor:pointer;">&times;</span>
+    <img id="modalImage" src="" style="max-width:90%; max-height:90%; border:5px solid white; border-radius:10px;" />
+  </div>
+</section>
+
+ 
+     <footer>
+         <img src="{% static 'mainapp/images/logo.png' %}" alt="Green Coin Footer Logo" class="footer-logo"style="width:40px; height:40px; border-radius:100%;">
+         <p><i>"Nature Rewards Those Who Care!"</i></p>
+         <p>Contact: <a href="mailto:greencoin.support@example.com">greencoin.support@example.com</a></p>
+     </footer>
+ <script>
+  function openImageModal(imageUrl) {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImage");
+  modalImg.src = imageUrl;  
+  modal.style.display = "flex";  
+}
+
+function closeImageModal() {
+  document.getElementById("imageModal").style.display = "none";  
+}
+
+</script>
+
+ </body>
+</html>

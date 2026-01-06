@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Coin - Rewards</title>
+    <link rel="stylesheet" href="{% static 'mainapp/css/reward.css' %}">
+    <script src="{% static 'mainapp/js/reward.js' %}" defer></script>
+</head>
+<body>
+
+    <!-- Hidden CSRF token  -->
+    <form style="display: none;">
+        {% csrf_token %}
+    </form>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="{% static 'mainapp/images/logo.png' %}" alt="Green Coin Logo" style="width:50px; height:50px; border-radius:100%;">
+            <span>Green Coin</span>
+        </div>
+        <nav>
+            <ul>
+
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'submit_proof' %}">Submit Proof</a></li>
+                <li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
+                <li><a href="{% url 'reward' %}">Rewards</a></li>
+                <li><a href="{% url 'awareness' %}">Eco Benefits</a></li>
+
+                {% if not request.session.user_id %}
+    <li><a href="{% url 'login' %}">Login</a></li>
+  {% endif %}
+            </ul>
+        </nav>
+        <div class="logo">
+            <a href="{% url 'profile' %}">
+                <img src="{% static 'mainapp/images/profile.jpeg' %}" alt="Profile" style="width:40px; height:40px; border-radius:100%;">
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h4>"Give back to nature, and let Green Coins give back to you."<br> Every green act is a golden reward.</h4>
+        <a href="#rewards" class="btn">Redeem it NOW!</a>
+    </div>
+
+    <!-- Rewards Section -->
+    <section id="rewards">
+        <h1>Exciting Rewards Await You!</h1>
+        <p>Earn Green Coins and redeem them for exclusive eco-friendly products, discounts, and more.</p>
+
+        <div class="reward-items">
+            <div class="reward-card">
+                <img src="{% static 'mainapp/images/r1.jpeg' %}" alt="INOX Discount">
+                <h3>₹50 OFF at INOX</h3>
+                <p>Redeem for 50 Green Coins</p>
+                <button onclick="redeemReward(50, '₹50 OFF at INOX')">Redeem</button>
+            </div>
+
+            <div class="reward-card">
+                <img src="{% static 'mainapp/images/r2.jpeg' %}" alt="Canteen Discount">
+                <h3>₹50 OFF at Canteen</h3>
+                <p>Redeem for 100 Green Coins</p>
+                <button onclick="redeemReward(100, '₹50 OFF at Canteen')">Redeem</button>
+            </div>
+
+            <div class="reward-card">
+                <img src="{% static 'mainapp/images/r3.jpeg' %}" alt="Trends Discount">
+                <h3>10% OFF at Trends</h3>
+                <p>Redeem for 120 Green Coins</p>
+                <button onclick="redeemReward(120, '10% OFF at Trends')">Redeem</button>
+            </div>
+        </div>
+
+        <div id="message" style="margin-top: 20px; font-weight: bold; color: green; text-align: center;"></div>
+    </section>
+
+    <!-- Footer -->
+    <div id="Footer">
+        <img src="{% static 'mainapp/logo.png' %}" alt="Green Coin Logo" class="footer-logo" style="width:50px; height:50px; border-radius:100%;">
+        <p><i>"Nature Rewards Those Who Care!"</i></p>
+        <p>Contact us at: <a href="mailto:greencoin.support@example.com">greencoin.support@example.com</a></p>
+        <p>&copy; 2025 Green Coin. All rights reserved.</p>
+    </div>
+
+</body>
+</html>
