@@ -1,6 +1,6 @@
 # Green Coins- Web Application
 
-Green Coin is a Django-based web application designed to promote eco-friendly activities by rewarding users with Green Coins for verified environmental actions.
+Green Coins is a Django-based web application designed to promote eco-friendly activities by rewarding users with Green Coins for verified environmental actions.
 The project aims to create awareness, encourage sustainable behavior, and build a scalable Anti-Pollution Market system.
 
 This project is developed as an MCA Capstone Project with real-world use cases and scalability in mind.
@@ -14,8 +14,6 @@ Green Coins allows users to:
 - Earn Green Coins after approval
 - View profile, coins, and leaderboard
 - Get tree plantation recommendations based on city, weather, and pollution data
-
-This project is developed as an **MCA Capstone Project** with real-world use cases and scalability in mind.
 
 
 ##  Tech Stack
